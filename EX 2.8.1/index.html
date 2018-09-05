@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise 3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="calc">
+    <div class="screen" id="screen"></div>
+    <div class="buttons">
+      <button class="btn btn-num" type="button" name="button-1" value="1">1</button>
+      <button class="btn btn-num" type="button" name="button-2" value="2">2</button>
+      <button class="btn btn-num" type="button" name="button-3" value="3">3</button>
+      <button class="btn btn-op" type="button" name="button-plus" value="+">+</button>
+      <button class="btn btn-num" type="button" name="button-4" value="4">4</button>
+      <button class="btn btn-num" type="button" name="button-5" value="5">5</button>
+      <button class="btn btn-num" type="button" name="button-6" value="6">6</button>
+      <button class="btn btn-op" type="button" name="button-minus" value="-">–</button>
+      <button class="btn btn-num" type="button" name="button-7" value="7">7</button>
+      <button class="btn btn-num" type="button" name="button-8" value="8">8</button>
+      <button class="btn btn-num" type="button" name="button-9" value="9">9</button>
+      <button class="btn btn-op" type="button" name="button-mult" value="*">X</button>
+      <button class="btn btn-num" type="button" name="button-0" value="0">0</button>
+      <button class="btn" type="button" name="button-left" value="(">(</button>
+      <button class="btn" type="button" name="button-right" value=")">)</button>
+      <button class="btn btn-op" type="button" name="button-div" value="/">/</button>
+      <button class="btn" type="button" name="button-clear" value=""><–</button>
+      <button class="btn btn-num" type="button" name="button-point" value=".">.</button>
+      <button class="btn btn--big" type="button" name="button-result" value="">=</button>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // var buttons = document.getElementsByClassName('btn');
+    // var scr = document.getElementById('screen');
+    //
+    // for (var i = 0; i < 19; i++) {
+    //   buttons[i].onclick = function() {
+    //     scr.innerHTML = scr.innerHTML + this.value;
+    // }};
+    //
+    // buttons[16].onclick = function() {
+    //   var expr = scr.innerHTML;
+    //   scr.innerHTML = expr.substring(0, expr.length - 1);
+    // };
+    //
+    // buttons[18].onclick = function() {
+    //   scr.innerHTML = eval(scr.innerHTML);
+    // };
+
+    var buttons = document.getElementsByClassName('btn');
+    var buttonsNum = document.getElementsByClassName('btn-num');
+    var buttonsOp = document.getElementsByClassName('btn-op');
+    var scr = document.getElementById('screen');
+    var curNum = "";
+    var oldNum = "";
+    var resNum = "";
+    var operator;
+    var flag;
+
+    for (var i = 0; i < 11; i++) {
+      buttonsNum[i].onclick = function() {
+        if (flag) scr.innerHTML = "";
+        scr.innerHTML = scr.innerHTML + this.value;
+        flag = 0;
+        curNum = Number(scr.innerHTML);
+    }};
+
+    buttons[16].onclick = function() {
+      scr.innerHTML = "";
+    };
+
+    for (var i = 0; i < 4; i++) {
+      buttonsOp[i].onclick = function() {
+        operator = this.name;
+        oldNum = Number(scr.innerHTML);
+        flag = 1;
+    }};
+
+    buttons[18].onclick = function() {
+      switch (operator) {
+        case "button-plus":
+          resNum = oldNum + curNum;
+          break;
+
+        case "button-minus":
+          resNum = oldNum - curNum;
+          break;
+
+        case "button-mult":
+          resNum = oldNum * curNum;
+          break;
+
+        case "button-div":
+          resNum = oldNum / curNum;
+          break;
+
+        default:
+          resNum = curNum;
+      }
+      scr.innerHTML = resNum;
+      flag = 1;
+    }
+
+  </script>
+
+</body>
