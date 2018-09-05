@@ -11,6 +11,6 @@
 
 * EX 2.1-4 - Fibonacci numbers display
 * EX 2.5-7 - Colors HSL display
-* EX 2.8 - Calculator
-* EX 1.2 - Telescreen (le télécran)
-* EX 1.3 - Teasing (le taquin)
+* EX 2.8.1 - Calculator
+* EX 2.8.2 - Telescreen (le télécran)
+* EX 2.8.3 - Teasing (le taquin)
